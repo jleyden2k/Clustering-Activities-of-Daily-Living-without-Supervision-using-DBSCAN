@@ -121,3 +121,50 @@ and true labels, normalized between 0 and 1. These metrics
 allow assessment on how well the clustering aligns with the true
 activity structure, even though labels were not used during
 clustering.
+
+## Results and Conclusions
+
+DBSCAN was used for clustering at an eps value of 2.2, with
+a respective num_samples value of 4. While many values were
+tested using grid-search and checking manually within a forloop, these values were deemed optimal for the feature
+dataframe provided. Once clustering was performed, the best
+ARI/NMI values were achieved at 0.320 and 0.399 respectively.
+
+Following the generation of a confusion matrix, PCA was
+performed to better understand the relationship between each
+feature and the given results. As a result, the use of PCA flattens
+the dimensions into PCA1 and PCA2, allowing for a 2D
+representation of the features observed.
+
+This study explored the effectiveness of unsupervised
+clustering for inferring Activities of Daily Living (ADLs) from
+ambient sensor data using the Ordonez A and B datasets. The
+core objective was to determine whether meaningful patterns of
+human behavior could be identified directly from raw sensor
+activations, without relying on supervised labels during training.
+Through extensive preprocessing and feature engineering—
+incorporating temporal, spatial, and contextual elements such as
+sensor type transitions, time since last activation, and cyclic time
+encodings—we constructed a rich feature space capturing the
+underlying structure of daily routines. The density-based
+DBSCAN algorithm was chosen for its ability to detect clusters
+of arbitrary shape and to ignore outliers, making it well suited to
+the noisy and event-driven nature of smart home data. This
+experiment revealed that DBSCAN was capable of clustering
+sensor events with moderate alignment to ground-truth ADLs,
+achieving an Adjusted Rand Index (ARI) of 0.320 and a
+Normalized Mutual Information (NMI) of 0.399 under optimal
+parameters (ε = 2.2, min_samples = 4). These metrics reflect the
+partial discovery of latent activity patterns purely from sensor
+dynamics. While unsupervised performance naturally lags
+behind supervised methods, the results demonstrate that
+structure does exist within the sensor data stream that aligns with
+real-world behavior. The interpretability of clusters and their
+relationship to known ADLs also highlights the value of welldesigned features and context-aware preprocessing. Future work
+will focus on enhancing the representation of transitions
+between activities, incorporating temporal segmentation
+windows, and exploring hybrid models that bridge unsupervised
+embeddings with weak supervision or semi-supervised
+refinement. Additionally, further evaluation on alternative smart
+home datasets will help assess the generalizability of the
+DBSCAN-based approach.
