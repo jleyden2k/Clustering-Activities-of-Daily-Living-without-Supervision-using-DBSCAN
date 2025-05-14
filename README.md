@@ -4,7 +4,7 @@
 
 This project was run in Python, with multiple libraries used, including Pandas, NumPy, Scikit-Learn, Matplotlib, and Seaborn.
 
-The dataset for this project, including all features and labels, is publicly available and included in the directory. 
+The dataset for this project, including all features and labels, is publicly available - UCI ADL Binary Dataset.
 
 The files main.py and main.ipynb are both full, final versions of the codebase. One is a Jupyter notebook, one is a normal Python file.
 
