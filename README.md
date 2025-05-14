@@ -1,6 +1,8 @@
 # Clustering-Activities-of-Daily-Living-without-Supervision-using-DBSCAN
 
-This study explores the application of unsupervised
+## Introduction
+
+This project explores the application of unsupervised
 clustering techniques to smart home sensor data for identifying
 some sample Activities of Daily Living (ADLs) without labeled
 supervision. Using the publicly available CASAS Ordonez A and
@@ -22,8 +24,9 @@ with thoughtful feature engineering, can meaningfully uncover
 latent structure in smart home sensor data, offering potential for
 real-world activity recognition without manual annotation
 
-METHODOLOGY
-A. Datasets and Preprocessing
+## Methods
+
+### Datasets and Preprocessing
 This section describes the complete data preprocessing
 pipeline, feature engineering strategy, and clustering methods
 used for unsupervised ADL recognition using the Ordonez A
@@ -44,7 +47,8 @@ OrdonezA_ADLs.txt and OrdonezB_ADLs.txt, which specify
 the start and end times for each activity. These labels are not
 used during clustering but serve to evaluate clustering
 performance afterwards.
-B. Temporal Relationships
+
+### Temporal Relationships
 To work with temporal dynamics, we first parsed the start
 and end timestamps of each sensor activation into datetime
 objects and computed each event's duration in seconds. Events
@@ -57,7 +61,8 @@ chronologically by activation time. Additionally, we computed
 the time since the last activation, which captures temporal gaps
 between successive events, and filled any missing values with
 zero for initialization.
-C. Spatial/Transition Based Relationships
+
+### Spatial/Transition Based Relationships
 Each sensor's location (e.g., "Fridge", "Seat") was mapped
 to a higher-level room category (e.g., "Kitchen", "Living
 Room") using a predefined dictionary. The resulting Room
@@ -72,7 +77,8 @@ previous and current sensor types (SensorTransition), and a
 binary flag indicating whether the current sensor type differs
 from the previous one (SensorTypeChange). Such transitionbased features are essential in modeling the flow of activities
 and recognizing common routines.
-D. Other Features
+
+### Other Features
 Two features were engineered to quantify behavioral
 patterns over time, which are the average time interval between
 consecutive activations of the same sensor location. This
@@ -90,7 +96,8 @@ SensorActivationCount feature tracks the number of times each
 sensor location has been triggered up to a given point. This
 helps identify areas of frequent usage and may correlate with
 specific activities like cooking or grooming.
-E. Clustering and Evaluation Metrics
+
+### Clustering and Evaluation Metrics
 While the clustering model operates in an unsupervised
 manner, the ground-truth ADL labels were assigned post hoc
 by matching each sensor activation to its corresponding activity
